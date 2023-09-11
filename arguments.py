@@ -6,11 +6,11 @@ import torch
 def get_args():
     parser = argparse.ArgumentParser(description='RL')
 
-    # the saving directory for train.py
+    # the saving directory for train.py 保存目录
     parser.add_argument(
         '--output_dir', type=str, default='trained_models/my_model')
 
-    # resume training from an existing checkpoint or not
+    # resume training from an existing checkpoint or not  是否从现有检查点恢复训练
     parser.add_argument(
         '--resume', default=False, action='store_true')
     # if resume = True, load from the following checkpoint
@@ -77,16 +77,16 @@ def get_args():
         '--clip-param',
         type=float,
         default=0.2,
-        help='ppo clip parameter (default: 0.2)')
+        help='ppo clip parameter (default: 0.2)')  #PPO 算法是一种用于强化学习的优化算法，它通过限制更新的幅度来确保策略更新的稳定性。clip 参数用于控制在更新策略时允许的最大比例变化，以防止策略更新太过剧烈
     parser.add_argument(
         '--value-loss-coef',
         type=float,
         default=0.5,
-        help='value loss coefficient (default: 0.5)')
+        help='value loss coefficient (default: 0.5)')  表示值损失系数（value loss coefficient），用于设置策略优化算法中值函数损失的权重
     parser.add_argument(
-        '--entropy-coef',
+        '--entropy-coef',                              表示熵项系数（entropy term coefficient），用于调节策略的探索性和稳定性。
         type=float,
-        default=0.0,
+        default=0.0,                                在训练过程中，值函数损失用于衡量策略的输出值与实际值之间的差异，而熵项则用于鼓励策略的探索性，以提高其对环境的认识度。
         help='entropy term coefficient (default: 0.01)')
     parser.add_argument(
         '--lr', type=float, default=4e-5, help='learning rate (default: 7e-4)')
@@ -140,7 +140,7 @@ def get_args():
         default=0.95,
         help='gae lambda parameter (default: 0.95)')
     parser.add_argument(
-        '--log-interval',
+        '--log-interval',                
         type=int,
         default=20,
         help='log interval, one log per n updates (default: 10)')
